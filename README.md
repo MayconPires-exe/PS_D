@@ -1,7 +1,7 @@
 # Prova de Sistemas Distribuídos
 
 ## Ferramentas utilizadas 
-> [Node]([https://](https://nodejs.org/en)), [Knex](https://knexjs.org), [Fastify](https://www.fastify.io), [ESLint]([https://](https://eslint.org))
+> [Node](https://nodejs.org/en), [Knex](https://knexjs.org), [Fastify](https://www.fastify.io), [ESLint](https://eslint.org)
  * ### Biblioteca Utilizada / Linguagem utilizada
    * > [TypeScript](https://www.typescriptlang.org)
 
