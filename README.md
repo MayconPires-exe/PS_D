@@ -24,7 +24,7 @@
 ## Notas sobre o banco utilizado
 * O banco por ser uma estrutura simples porem uma idealização de checking para eventos, baseado na estrutura que nós foi passada será utilizado o banco [PostgreSQL](https://www.postgresql.org)
 
-  ![alt](/home/maycon/Documentos/Std_node/PS_D/03-api-solid/maycon.jpeg)
+  ![alt](maycon.jpeg)
 
 ## Sobre as ferramentas utilizadas
 > Prisma 
