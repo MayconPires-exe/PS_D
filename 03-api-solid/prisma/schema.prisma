@@ -1,0 +1,97 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              String   @id @default(uuid())
+  password_hash   String
+  nome            String   @db.VarChar(100)
+  email           String   @unique @db.VarChar(50)
+  cpf             String   @unique @db.VarChar(11)
+  telefone        String   @db.VarChar(11)
+  logradouro      String   @db.VarChar(50)
+  numero          Int?     @db.Integer
+  complemento     String?  @db.VarChar(50)
+  bairro          String   @db.VarChar(50)
+  cidade          String   @db.VarChar(50)
+  uf              String   @db.Char(2)
+  cep             String   @db.Char(8)
+  data_nascimento DateTime @db.Date
+  data_cadastro   DateTime @db.Timestamp()
+
+  student Student[]
+  speaker Speaker[]
+
+  @@map("pessoa")
+}
+
+model Student {
+  id                String  @id @default(uuid())
+  curso             String  @db.VarChar(100)
+  semestre          Int     @db.Integer
+  departamento      String  @db.VarChar(100)
+  notificacao_email Boolean
+  notificacao_whats Boolean
+
+  pessoa_id User   @relation(fields: [pessoaId], references: [id])
+  pessoaId  String
+
+  @@map("aluno")
+}
+
+model Speaker {
+  id           String @id @default(uuid())
+  formacao     String @db.VarChar(100)
+  titularidade String @db.VarChar(50)
+  instituicao  String @db.VarChar(100)
+  profissao    String @db.VarChar(100)
+  empresa      String @db.VarChar(100)
+
+  palestrante_id User    @relation(fields: [palestranteId], references: [id])
+  palestranteId  String
+  event          Event[]
+
+  @@map("palestrante")
+}
+
+model Event {
+  id             String   @id @default(uuid())
+  data_cadastrro DateTime @db.Timestamp()
+  titulo         String   @db.VarChar(100)
+  subtitulo      String   @db.VarChar(100)
+  descricao      String   @db.VarChar(500)
+  data_evento    DateTime @db.Date
+  hora_evento    DateTime @db.Time()
+  tipo_evento    String   @db.VarChar(50)
+  valor_evento   Decimal  @db.Money
+  created_at     DateTime @default(now())
+
+  palestrante_id Speaker       @relation(fields: [palestranteId], references: [id])
+  palestranteId  String
+  inscription    inscription[]
+
+  @@map("evento")
+}
+
+model inscription {
+  id                 String   @id @default(uuid())
+  data_castro        DateTime @db.Timestamp()
+  cupom_desconto     String   @db.VarChar(50)
+  valor_desconto     Decimal  @db.Money
+  valor_pago         Decimal  @db.Money
+  confirmou_presenca Boolean
+  participou_evento  Boolean
+
+  evento_id Event  @relation(fields: [eventoId], references: [id])
+  eventoId  String
+
+  @@map("inscricao")
+}
