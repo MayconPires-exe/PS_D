@@ -1,24 +1,49 @@
 # Prova de Sistemas Distribuídos
 
+## Integrantes
+> Artur, Marcio Willian, Maycon Pires, Natalia
+
+## Período
+  * 9º Eng. Computação
+
+## Objetivo do Projeto
+ * O objetivo do projeto seria utilizar a estrutura que foi fornecida como um checkIn para eventos acadêmicos
+
 ## Ferramentas utilizadas 
-> [Node](https://nodejs.org/en), [Prisma](https://www.prisma.io), [Fastify](https://www.fastify.io), [ESLint](https://eslint.org)
+> [Node](https://nodejs.org/en), [Prisma](https://www.prisma.io), [Fastify](https://www.fastify.io), [ESLint](https://eslint.org), [Docker](https://hub.docker.com)
  * ### Biblioteca Utilizada / Linguagem utilizada
    * > [TypeScript](https://www.typescriptlang.org)
 
 ## Informações sobre o projeto
   ### Como baixar o projeto
   ```bash
-  # Clone este repositório
-  $ git clone https://github.com/MayconPires-exe/PS_D.git
   # Acesse a pasta do projeto no terminal/cmd
-  $ cd PS_D/03-api-solid
+  $ cd Backup/03-api-solid
   # Instale as dependências
   $ npm install
   ```
+  ## Criar banco
+  ```bash
+  # Utilizando o docker compose
+  $ sudo docker compose up -d
+  # Pode ser usado desse jeito baseado na sua versão do compose
+  $ sudo docker-compose up -d
+  ```
+  * Desse modo o docker estará preparado para receber as migration para que seja criado a estrutura e as relações dentro do banco
+
+  ## Populando Banco
+  ```bash
+  # Utilize o prisma
+  $ npx prisma migrate dev
+  
+  # Para visualizar as tabelas criadas
+  $ npx prisma studio
+  ```
+
   ## Como executar o projeto
   ```bash
-  # Execute a aplicação
-  $ npm run dev
+  # Execute a a
+  $ npm run start:dev
   ```
 
 ## Notas sobre o banco utilizado
